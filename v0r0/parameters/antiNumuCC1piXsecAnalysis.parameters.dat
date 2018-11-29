@@ -1,0 +1,13 @@
+--- Cut levels --------
+
+ < antiNumuCC1piXsecAnalysis.MinAccumLevelToSave = 5 >   // minimum accum level to save the event
+
+------ Selections ------------------------
+
+Analysis sample (1 for FGD1, 2 for FGD2, 3 for both)
+
+ < antiNumuCC1piXsecAnalysis.Selections.whichFGD = 1 >
+
+ < antiNumuCC1piXsecAnalysis.Selections.RunMultiTrack = 0 >
+ < antiNumuCC1piXsecAnalysis.MicroTrees.StoreAllTruePrimaryPions = 0 >
+ 

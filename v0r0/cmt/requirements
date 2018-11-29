@@ -1,0 +1,38 @@
+package highland2/antiNumuCC1piXsecAnalysis
+
+version v0r0
+
+branches cmt src doc app 
+
+use antiNumuCCAnalysis * highland2
+use numuCCMultiPiAnalysis * highland2
+
+#use baseTrackerAnalysis * highland2
+
+# Build methods to include.
+document doxygen doxygen -group=documentation src/*.cpp src/*.h src/*.hxx src/*.cxx ../doc/*.dox
+
+# Build information used by packages that use this one.
+macro antiNumuCC1piXsecAnalysis_cppflags " -DANTINUMUCC1PIXSECANALYSIS_USED"
+macro antiNumuCC1piXsecAnalysis_linkopts " -L$(ANTINUMUCC1PIXSECANALYSISROOT)/$(antiNumuCC1piXsecAnalysis_tag) -lantiNumuCC1piXsecAnalysis "
+macro antiNumuCC1piXsecAnalysis_stamps " $(ANTINUMUCC1PIXSECANALYSISROOT)/$(antiNumuCC1piXsecAnalysis_tag)/antiNumuCC1piXsecAnalysis.stamp"
+
+# The paths to find this library.
+path_remove PATH "$(ANTINUMUCC1PIXSECANALYSISROOT)"
+path_prepend PATH "$(ANTINUMUCC1PIXSECANALYSISROOT)/$(antiNumuCC1piXsecAnalysis_tag)"
+path_remove LD_LIBRARY_PATH "$(ANTINUMUCC1PIXSECANALYSISROOT)"
+path_prepend LD_LIBRARY_PATH "$(ANTINUMUCC1PIXSECANALYSISROOT)/$(antiNumuCC1piXsecAnalysis_tag)"
+path_remove DYLD_LIBRARY_PATH "" \
+	    Darwin	      "$(ANTINUMUCC1PIXSECANALYSISROOT)"
+path_prepend DYLD_LIBRARY_PATH "" \
+	     Darwin	       "$(ANTINUMUCC1PIXSECANALYSISROOT)/$(antiNumuCC1piXsecAnalysis_tag)"
+
+
+# The library to build
+library antiNumuCC1piXsecAnalysis *.cxx  ../dict/*.cxx
+
+application RunAntiNumuCC1piXsecAnalysis ../app/RunAntiNumuCC1piXsecAnalysis*.cxx
+
+# tests
+document doxygen doxygen -group=documentation ../scripts/* ../doc/*.dox
+
